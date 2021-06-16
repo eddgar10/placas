@@ -9,6 +9,7 @@
       <title>Busqueda de placas</title>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
       <style>
+          
          #namanyay-search-btn {
          background:#0099ff;
          color:white;
@@ -36,7 +37,7 @@
          padding: 200px;             
          padding: 0px;
          margin: 0px;
-         background: #232946 !important;
+         background-color: #212531;
          }
          #title {
          color: #fffffe;
@@ -96,8 +97,7 @@
       <h6 id="description" class="text-center text-muted">Verifica si alguien ha encontrado y publicado tu placa</h6>
       <div class="container col-md-6">
          <form action="action/searchinfo.php" style="display:inline;" method="post">
-            <input id="namanyay-search-box" name="buscaplaca" size="40" type="text" placeholder="Buscar Placa"/ required>
-            
+            <input id="namanyay-search-box" name="buscaplaca" size="40" type="text" placeholder="Buscar Placa"/ required pattern="[A-Za-z0-9]{5,10}">            
             <input id="namanyay-search-btn" value="Buscar" type="submit"/ >
          </form>
       </div>
@@ -106,7 +106,7 @@
          <h6 id="description" class="text-center text-muted">Sube tus datos de contacto y la placa encontrada </h6>
          <form action="action/submitinfo.php" method="post" enctype="multipart/form-data" id="import_form">
             <div class="form-group">
-               <label>Nombre</label>
+               <label>Nombre de contacto</label>
                <input type="text" class="form-control" id="nombre" placeholder="(solo se aceptan letras)"  name="nombre"  required pattern="[A-Za-z ]{4,30}" >
             </div>
             <div class="form-group">
@@ -156,7 +156,7 @@
             </div>
             <br>
             <div class="form-group">
-               <label>¿En que estado encontraste la placa?</label>
+               <label>¿En que lugar se encuentra la placa?</label>
                <select name="edo_enc">
                   <option value=”aguascalientes”>Aguascalientes</option>
                   <option value=”baja_california“>Baja California </option>
@@ -196,9 +196,8 @@
                <label>Carga una Imagen de la Placa</label>
                <input type="file" class="form-control" id="imagenplaca" name="imagenplaca" placeholder="Carga una imagen de la placa encontrada" multiple accept='image/*' required>
             </div>
-            <input type="submit" class="btn btn-success btn-sm" name="import_data" value="Cargar Registro">
-            <br>
-            <br>
+            <input id="namanyay-search-btn" type="submit" class="btn btn-success btn-sm" name="import_data" value="Cargar Registro">
+            
          </form>
       </div>
    </body>

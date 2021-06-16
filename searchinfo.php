@@ -34,7 +34,7 @@
          padding: 200px;             
          padding: 0px;
          margin: 0px;
-         background: #232946 !important;
+         background-color: #212531;
          }
          #title {
          color: #fffffe;
@@ -89,7 +89,7 @@
       </style>
    </head>
    <body>
-
+       
 <!--*****************************************************************************-->
 <?php
 header('Content-type: text/html; charset=utf-8');
@@ -109,7 +109,14 @@ $placa = strtolower ($_POST['buscaplaca']);
        
 if($banderaPlacaExiste == 0)
 {
-    $mensajefinalizacion= "La Placa ".$placa." no existe en los registros cargados por usuarios de la plataforma, intenta más adelante";   
+            $html_placa= "sin registro para ".$placa;
+             $html_edo_pertenece= "sin registro para ".$placa;
+             $html_edo_encontrada= "sin registro para ".$placa;
+             $html_fecha_encontrada= "sin registro para ".$placa;
+             $html_nombre= "sin registro para ".$placa;
+             $html_telefono = "sin registro para ".$placa;
+             
+    
     
 }
 if($banderaPlacaExiste >0)        
@@ -117,31 +124,44 @@ if($banderaPlacaExiste >0)
     $mensajefinalizacion= "La Placa ".$placa." esta en los registros cargados por usuarios de la plataforma";       
     
     $buscaplaca = ("SELECT placa, estado_pertenece, estado_encontrada, fecha_encontrada, nombre, telefono, imagen FROM encontradas WHERE placa= '".$placa."'"); 
-            echo "<table border='3'>            
-            <tr>
-            <th>Placa</th>
-            <th>Estado al que pertenece</th>
-            <th>Estado donde se encuentra</th>
-            <th>Fecha encontrada</th>
-            <th>Nombre de quien la encuentra</th>
-            <th>Teléfono para Contacto</th>
-            <th>Fotografia</th>
-            </tr>";
+
     if ($result = mysqli_query($conn, $buscaplaca)){
          while($row = $result->fetch_assoc()){
-                                 
-             echo "<td>".$row['placa']."</td>";
-             echo "<td>".$row['estado_pertenece']."</td>";
-             echo "<td>".$row['estado_encontrada']."</td>";
-             echo "<td>".$row['fecha_encontrada']."</td>";
-             echo "<td>".$row['nombre']."</td>";
-             echo "<td>".$row['telefono']."</td>";                         
-             echo "<td>".'<img height="300" width="300" src="data:image/jpeg;base64,'.base64_encode($row['imagen']).'"/>'."</td>";
+             $html_placa= $row['placa'];
+             $html_edo_pertenece= $row['estado_pertenece'];
+             $html_edo_encontrada= $row['estado_encontrada'];
+             $html_fecha_encontrada= $row['fecha_encontrada'];
+             $html_nombre= $row['nombre'];
+             $html_telefono = $row['telefono'];
+             $html_foto_placa = '<img height="600" width="1000" src="data:image/jpeg;base64,'.base64_encode($row['imagen']).'"/>';             
             }
-        }     
+        }
     }
     
 ?>
 <!--*****************************************************************************-->
+       <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Placa</th>
+      <th scope="col">Estado al que pertenece</th>
+      <th scope="col">Estado Donde se encuentra</th>
+      <th scope="col">Fecha encontrada</th>
+      <th scope="col">Nombre de quien la encuentra</th>
+      <th scope="col">Telefonno para contacto</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><?php echo $html_placa ?></th>
+      <td><?php echo $html_edo_pertenece ?></td>
+      <td><?php echo $html_edo_encontrada ?></td>
+      <td><?php echo $html_fecha_encontrada ?></td>
+        <td><?php echo $html_nombre ?></td>
+        <td><?php echo $html_telefono ?></td>                
+    </tr>    
+  </tbody>
+</table>
+   <?php echo $html_foto_placa ?>    
    </body>
 </html>
