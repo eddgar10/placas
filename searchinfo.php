@@ -96,72 +96,80 @@ header('Content-type: text/html; charset=utf-8');
 
 include "../config/db_connect.php";
 
+$placa = strtolower($_POST['buscaplaca']);
 
-
-$placa = strtolower ($_POST['buscaplaca']);
-
-        $query = $conn->prepare("SELECT COUNT(placa) FROM encontradas WHERE placa= '".$placa."' " );
-                        $query->execute();
-                        $query->bind_result($tables);
-                        while( $query->fetch()){
-                                $banderaPlacaExiste = $tables;
-                        }
-       
-if($banderaPlacaExiste == 0)
+$query = $conn->prepare("SELECT COUNT(placa) FROM encontradas WHERE placa= '" . $placa . "' ");
+$query->execute();
+$query->bind_result($tables);
+while ($query->fetch())
 {
-            $html_placa= "sin registro para ".$placa;
-             $html_edo_pertenece= "sin registro para ".$placa;
-             $html_edo_encontrada= "sin registro para ".$placa;
-             $html_fecha_encontrada= "sin registro para ".$placa;
-             $html_nombre= "sin registro para ".$placa;
-             $html_telefono = "sin registro para ".$placa;
-             
-    
-    
+    $banderaPlacaExiste = $tables;
 }
-if($banderaPlacaExiste >0)        
-    {
-    $mensajefinalizacion= "La Placa ".$placa." esta en los registros cargados por usuarios de la plataforma";       
-    
-    $buscaplaca = ("SELECT placa, estado_pertenece, estado_encontrada, fecha_encontrada, nombre, telefono, imagen FROM encontradas WHERE placa= '".$placa."'"); 
 
-    if ($result = mysqli_query($conn, $buscaplaca)){
-         while($row = $result->fetch_assoc()){
-             $html_placa= $row['placa'];
-             $html_edo_pertenece= $row['estado_pertenece'];
-             $html_edo_encontrada= $row['estado_encontrada'];
-             $html_fecha_encontrada= $row['fecha_encontrada'];
-             $html_nombre= $row['nombre'];
-             $html_telefono = $row['telefono'];
-             $html_foto_placa = '<img height="600" width="1000" src="data:image/jpeg;base64,'.base64_encode($row['imagen']).'"/>';             
-            }
+if ($banderaPlacaExiste == 0)
+{
+    $html_placa = "sin registro para " . $placa;
+    $html_edo_pertenece = "sin registro para " . $placa;
+    $html_edo_encontrada = "sin registro para " . $placa;
+    $html_fecha_encontrada = "sin registro para " . $placa;
+    $html_nombre = "sin registro para " . $placa;
+    $html_telefono = "sin registro para " . $placa;
+
+    echo '<script type="text/javascript">
+            alert("No existe registro de esa placa");
+            window.location.href="../index.html";
+            </script>';
+
+}
+if ($banderaPlacaExiste > 0)
+{
+    $mensajefinalizacion = "La Placa " . $placa . " esta en los registros cargados por usuarios de la plataforma";
+
+    $buscaplaca = ("SELECT placa, estado_pertenece, estado_encontrada, fecha_encontrada, nombre, telefono, imagen FROM encontradas WHERE placa= '" . $placa . "'");
+
+    if ($result = mysqli_query($conn, $buscaplaca))
+    {
+        while ($row = $result->fetch_assoc())
+        {
+            $html_placa = $row['placa'];
+            $html_edo_pertenece = $row['estado_pertenece'];
+            $html_edo_encontrada = $row['estado_encontrada'];
+            $html_fecha_encontrada = $row['fecha_encontrada'];
+            $html_nombre = $row['nombre'];
+            $html_telefono = $row['telefono'];
+            $html_foto_placa = '<img height="300" width="600" src="data:image/jpeg;base64,' . base64_encode($row['imagen']) . ' "/>';
         }
     }
-    
+}
+
 ?>
+
 <!--*****************************************************************************-->
+       <div class="table-responsive-lg">
        <table class="table table-striped table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Placa</th>
-      <th scope="col">Estado al que pertenece</th>
-      <th scope="col">Estado Donde se encuentra</th>
-      <th scope="col">Fecha encontrada</th>
-      <th scope="col">Nombre de quien la encuentra</th>
-      <th scope="col">Telefonno para contacto</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row"><?php echo $html_placa ?></th>
-      <td><?php echo $html_edo_pertenece ?></td>
-      <td><?php echo $html_edo_encontrada ?></td>
-      <td><?php echo $html_fecha_encontrada ?></td>
-        <td><?php echo $html_nombre ?></td>
-        <td><?php echo $html_telefono ?></td>                
-    </tr>    
-  </tbody>
-</table>
+          <thead>
+            <tr>
+              <th scope="col">Placa</th>
+              <th scope="col">Estado al que pertenece</th>
+              <th scope="col">Estado Donde se encuentra</th>
+              <th scope="col">Fecha encontrada</th>
+              <th scope="col">Nombre de quien la encuentra</th>
+              <th scope="col">Telefonno para contacto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><?php echo $html_placa ?></th>
+              <td><?php echo $html_edo_pertenece ?></td>
+              <td><?php echo $html_edo_encontrada ?></td>
+              <td><?php echo $html_fecha_encontrada ?></td>
+                <td><?php echo $html_nombre ?></td>
+                <td><?php echo $html_telefono ?></td>                
+            </tr>    
+          </tbody>
+        </table>
+    </div>
+    
    <?php echo $html_foto_placa ?>    
    </body>
 </html>
