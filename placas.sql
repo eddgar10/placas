@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 16-06-2021 a las 14:46:36
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 7.2.34
+-- Tiempo de generación: 17-06-2021 a las 22:45:04
+-- Versión del servidor: 10.3.16-MariaDB
+-- Versión de PHP: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -36,8 +37,10 @@ CREATE TABLE `encontradas` (
   `fecha_encontrada` varchar(10) NOT NULL,
   `nombre` varchar(60) NOT NULL,
   `telefono` varchar(10) NOT NULL,
-  `recuperada` binary(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `mensaje` varchar(190) NOT NULL,
+  `recuperada` tinyint(1) NOT NULL,
+  `fecha_recuperada` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Índices para tablas volcadas
@@ -57,7 +60,7 @@ ALTER TABLE `encontradas`
 -- AUTO_INCREMENT de la tabla `encontradas`
 --
 ALTER TABLE `encontradas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
