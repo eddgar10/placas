@@ -5,13 +5,13 @@ include "../config/db_connect.php";
 //https://programacion.net/articulo/almacenar_y_recuperar_una_imagen_de_una_base_de_datos_mysql_mediante_php_1861
 
 
-
 $placa =strtolower( $_POST['placa']);
 $edo_pertenece = $_POST['edo_pert'];
 $edo_encontrada = $_POST['edo_enc'];
-$fecha_carga = date("Y-m-d");
+$fecha_carga = date("d-m-Y");
 $nombre = strtolower($_POST['nombre']);
 $telefono = $_POST['telefono'];
+$mensaje = $_POST['mensaje'];
 
 
 if(isset($_POST["import_data"])){
@@ -31,7 +31,7 @@ if(isset($_POST["import_data"])){
 if($banderaPlacaExiste == 0)
 {
         //Insert image content into database
-        $mysql_insert = "INSERT INTO encontradas (placa, estado_pertenece, estado_encontrada, imagen, fecha_encontrada, nombre, telefono, recuperada) VALUES ('".$placa."', '".$edo_pertenece."', '".$edo_encontrada."', '".$imgplaca."', '".$fecha_carga."', '".$nombre."', '".$telefono."', '0')";
+        $mysql_insert = "INSERT INTO encontradas (placa, estado_pertenece, estado_encontrada, imagen, fecha_encontrada, nombre, telefono, recuperada, fecha_recuperada, mensaje) VALUES ('".$placa."', '".$edo_pertenece."', '".$edo_encontrada."', '".$imgplaca."', '".$fecha_carga."', '".$nombre."', '".$telefono."', '0','0','".$mensaje."')";
 
         mysqli_query($conn, $mysql_insert) or die("database error:". mysqli_error($conn));
     

@@ -122,10 +122,9 @@ if ($banderaPlacaExiste == 0)
 
 }
 if ($banderaPlacaExiste > 0)
-{
-    $mensajefinalizacion = "La Placa " . $placa . " esta en los registros cargados por usuarios de la plataforma";
+{    
 
-    $buscaplaca = ("SELECT placa, estado_pertenece, estado_encontrada, fecha_encontrada, nombre, telefono, imagen FROM encontradas WHERE placa= '" . $placa . "'");
+    $buscaplaca = ("SELECT placa, estado_pertenece, estado_encontrada, fecha_encontrada, nombre, telefono, mensaje, imagen FROM encontradas WHERE placa= '".$placa."'");
 
     if ($result = mysqli_query($conn, $buscaplaca))
     {
@@ -137,6 +136,7 @@ if ($banderaPlacaExiste > 0)
             $html_fecha_encontrada = $row['fecha_encontrada'];
             $html_nombre = $row['nombre'];
             $html_telefono = $row['telefono'];
+            $html_mensaje = $row['mensaje'];
             $html_foto_placa = '<img height="300" width="600" src="data:image/jpeg;base64,' . base64_encode($row['imagen']) . ' "/>';
         }
     }
@@ -145,7 +145,7 @@ if ($banderaPlacaExiste > 0)
 ?>
 
 <!--*****************************************************************************-->
-       <div class="table-responsive-lg">
+       <div class="container col-md-12">
        <table class="table table-striped table-dark">
           <thead>
             <tr>
@@ -155,6 +155,7 @@ if ($banderaPlacaExiste > 0)
               <th scope="col">Fecha encontrada</th>
               <th scope="col">Nombre de quien la encuentra</th>
               <th scope="col">Telefonno para contacto</th>
+              <th scope="col">Mensaje</th>
             </tr>
           </thead>
           <tbody>
@@ -165,11 +166,13 @@ if ($banderaPlacaExiste > 0)
               <td><?php echo $html_fecha_encontrada ?></td>
                 <td><?php echo $html_nombre ?></td>
                 <td><?php echo $html_telefono ?></td>                
+                <td><?php echo $html_mensaje ?></td>
             </tr>    
           </tbody>
         </table>
     </div>
-    
-   <?php echo $html_foto_placa ?>    
+       <div class="container col-md-10">
+   <?php echo $html_foto_placa ?>
+        </div>
    </body>
 </html>

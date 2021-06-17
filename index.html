@@ -30,7 +30,7 @@
          -webkit-border-radius:5px 0 0 5px;
          -o-border-radius:5px 0 0 5px;
          border:0 none;
-         width:160px;
+         width:210px;
          }
          body {
          text-align: center;
@@ -96,8 +96,8 @@
       <h1 id="title" class="text-center pt-5">Busqueda</h1>
       <h6 id="description" class="text-center text-muted">Verifica si alguien ha encontrado y publicado tu placa</h6>
       <div class="container col-md-6">
-         <form action="action/searchinfo.php" style="display:inline;" method="post">
-            <input id="namanyay-search-box" name="buscaplaca" size="40" type="text" placeholder="Buscar Placa"/ required pattern="[A-Za-z0-9]{5,10}">            
+         <form action="action/searchinfo.php" style="display:inline;" method="post">             
+            <input id="namanyay-search-box" name="buscaplaca" size="60" type="text" placeholder="numeros y letras juntos    "/ required pattern="[A-Za-z0-9]{5,10}">            
             <input id="namanyay-search-btn" value="Buscar" type="submit"/ >
          </form>
       </div>
@@ -107,92 +107,97 @@
          <form action="action/submitinfo.php" method="post" enctype="multipart/form-data" id="import_form">
             <div class="form-group">
                <label>Nombre de contacto</label>
-               <input type="text" class="form-control" id="nombre" placeholder="(solo se aceptan letras)"  name="nombre"  required pattern="[A-Za-z ]{4,30}" >
+               <input type="text" class="form-control" id="nombre" placeholder="solo se aceptan letras"  name="nombre"  required pattern="[A-Za-z ]{4,30}" >
             </div>
             <div class="form-group">
                <label>Telefono de Contacto</label>
-               <input type="text" class="form-control" id="telefono" placeholder="(solo numeros 10 Digitos)"  name="telefono"  required pattern="[0-9]{10}" >      
+               <input type="text" class="form-control" id="telefono" placeholder="solo numero a 10 Digitos"  name="telefono"  required pattern="[0-9]{10}" >      
             </div>
             <div class="form-group">
                <label id="placa-label">Placa sin Guiones</label>
-               <input type="text" class="form-control" id="placa" placeholder="(solo numeros y letras juntos)"  name="placa"  required pattern="[A-Za-z0-9]{5,10}" >        
+               <input type="text" class="form-control" id="placa" placeholder="solo numeros y letras juntos"  name="placa"  required pattern="[A-Za-z0-9]{5,10}" >        
             </div>
             <div class="form-group">
                <label>¿A que estado pertenece la placa?</label>
                <select name="edo_pert">
-                  <option value=”aguascalientes”>Aguascalientes</option>
-                  <option value=”baja_california“>Baja California </option>
-                  <option value=”baja_california_sur“>Baja California Sur </option>
-                  <option value=”campeche“>Campeche </option>
-                  <option value=”chiapas“>Chiapas </option>
-                  <option value=”chihuahua“>Chihuahua </option>
-                  <option value=”coahuila“>Coahuila </option>
-                  <option value=”colima“>Colima </option>
-                  <option value=”distrito_federal”>Distrito Federal</option>
-                  <option value=”durango“>Durango </option>
-                  <option value=”estado_de_mexico“>Estado de México </option>
-                  <option value=”guanajuato“>Guanajuato </option>
-                  <option value=”guerrero“>Guerrero </option>
-                  <option value=”hidalgo“>Hidalgo </option>
-                  <option value=”jalisco“>Jalisco </option>
-                  <option value=”michoacan“>Michoacán </option>
-                  <option value=”morelos“>Morelos </option>
-                  <option value=”nayarit“>Nayarit </option>
-                  <option value=”nuevo_leon“>Nuevo León </option>
-                  <option value=”oaxaca“>Oaxaca </option>
-                  <option value=”puebla“>Puebla </option>
-                  <option value=”querétaro“>Querétaro </option>
-                  <option value=”quintana_roo“>Quintana Roo </option>
-                  <option value=”san_luis_potosi“>San Luis Potosí </option>
-                  <option value=”sinaloa“>Sinaloa </option>
-                  <option value=”sonora“>Sonora </option>
-                  <option value=”tabasco“>Tabasco </option>
-                  <option value=”tamaulipas“>Tamaulipas </option>
-                  <option value=”tlaxcala“>Tlaxcala </option>
-                  <option value=”veracruz“>Veracruz </option>
-                  <option value=”yucatán“>Yucatán </option>
-                  <option value=”zacatecas”>Zacatecas</option>
+                  <option value=aguascalientes>Aguascalientes</option>
+                  <option value=baja_california>Baja California </option>
+                  <option value=baja_california_sur>Baja California Sur </option>
+                  <option value=campeche>Campeche </option>
+                  <option value=chiapas>Chiapas </option>
+                  <option value=chihuahua>Chihuahua </option>
+                  <option value=coahuila>Coahuila </option>
+                  <option value=colima>Colima </option>
+                  <option value=distrito_federal”>Distrito Federal</option>
+                  <option value=durango>Durango </option>
+                  <option value=estado_de_mexico>Estado de México </option>
+                  <option value=guanajuato>Guanajuato </option>
+                  <option value=guerrero>Guerrero </option>
+                  <option value=hidalgo>Hidalgo </option>
+                  <option value=jalisco>Jalisco </option>
+                  <option value=michoacan>Michoacán </option>
+                  <option value=morelos>Morelos </option>
+                  <option value=nayarit>Nayarit </option>
+                  <option value=nuevo_leon>Nuevo León </option>
+                  <option value=oaxaca>Oaxaca </option>
+                  <option value=puebla>Puebla </option>
+                  <option value=querétaro>Querétaro </option>
+                  <option value=quintana_roo>Quintana Roo </option>
+                  <option value=san_luis_potosi>San Luis Potosí </option>
+                  <option value=sinaloa>Sinaloa </option>
+                  <option value=sonora>Sonora </option>
+                  <option value=tabasco>Tabasco </option>
+                  <option value=tamaulipas>Tamaulipas </option>
+                  <option value=tlaxcala>Tlaxcala </option>
+                  <option value=veracruz>Veracruz </option>
+                  <option value=yucatán>Yucatán </option>
+                  <option value=zacatecas>Zacatecas</option>
                </select>
             </div>
             <br>
             <div class="form-group">
                <label>¿En que lugar se encuentra la placa?</label>
                <select name="edo_enc">
-                  <option value=”aguascalientes”>Aguascalientes</option>
-                  <option value=”baja_california“>Baja California </option>
-                  <option value=”baja_california_sur“>Baja California Sur </option>
-                  <option value=”campeche“>Campeche </option>
-                  <option value=”chiapas“>Chiapas </option>
-                  <option value=”chihuahua“>Chihuahua </option>
-                  <option value=”coahuila“>Coahuila </option>
-                  <option value=”colima“>Colima </option>
-                  <option value=”distrito_federal”>Distrito Federal</option>
-                  <option value=”durango“>Durango </option>
-                  <option value=”estado_de_mexico“>Estado de México </option>
-                  <option value=”guanajuato“>Guanajuato </option>
-                  <option value=”guerrero“>Guerrero </option>
-                  <option value=”hidalgo“>Hidalgo </option>
-                  <option value=”jalisco“>Jalisco </option>
-                  <option value=”michoacan“>Michoacán </option>
-                  <option value=”morelos“>Morelos </option>
-                  <option value=”nayarit“>Nayarit </option>
-                  <option value=”nuevo_leon“>Nuevo León </option>
-                  <option value=”oaxaca“>Oaxaca </option>
-                  <option value=”puebla“>Puebla </option>
-                  <option value=”querétaro“>Querétaro </option>
-                  <option value=”quintana_roo“>Quintana Roo </option>
-                  <option value=”san_luis_potosi“>San Luis Potosí </option>
-                  <option value=”sinaloa“>Sinaloa </option>
-                  <option value=”sonora“>Sonora </option>
-                  <option value=”tabasco“>Tabasco </option>
-                  <option value=”tamaulipas“>Tamaulipas </option>
-                  <option value=”tlaxcala“>Tlaxcala </option>
-                  <option value=”veracruz“>Veracruz </option>
-                  <option value=”yucatán“>Yucatán </option>
-                  <option value=”zacatecas”>Zacatecas</option>
+                  <option value=aguascalientes>Aguascalientes</option>
+                  <option value=baja_california>Baja California </option>
+                  <option value=baja_california_sur>Baja California Sur </option>
+                  <option value=campeche>Campeche </option>
+                  <option value=chiapas>Chiapas </option>
+                  <option value=chihuahua>Chihuahua </option>
+                  <option value=coahuila>Coahuila </option>
+                  <option value=colima>Colima </option>
+                  <option value=distrito_federal”>Distrito Federal</option>
+                  <option value=durango>Durango </option>
+                  <option value=estado_de_mexico>Estado de México </option>
+                  <option value=guanajuato>Guanajuato </option>
+                  <option value=guerrero>Guerrero </option>
+                  <option value=hidalgo>Hidalgo </option>
+                  <option value=jalisco>Jalisco </option>
+                  <option value=michoacan>Michoacán </option>
+                  <option value=morelos>Morelos </option>
+                  <option value=nayarit>Nayarit </option>
+                  <option value=nuevo_leon>Nuevo León </option>
+                  <option value=oaxaca>Oaxaca </option>
+                  <option value=puebla>Puebla </option>
+                  <option value=querétaro>Querétaro </option>
+                  <option value=quintana_roo>Quintana Roo </option>
+                  <option value=san_luis_potosi>San Luis Potosí </option>
+                  <option value=sinaloa>Sinaloa </option>
+                  <option value=sonora>Sonora </option>
+                  <option value=tabasco>Tabasco </option>
+                  <option value=tamaulipas>Tamaulipas </option>
+                  <option value=tlaxcala>Tlaxcala </option>
+                  <option value=veracruz>Veracruz </option>
+                  <option value=yucatán>Yucatán </option>
+                  <option value=zacatecas>Zacatecas</option>
                </select>
             </div>
-            <div class="form-group">
+             <div class="form-group">
+                 <label>Mensaje para el dueño</label>
+                 <input type="text" class="form-control" id="mensaje" placeholder="mensaje para el propietario"  name="mensaje"  required maxlength="190" required pattern="[A-Za-z0-9]{5,10}" >        
+                
+             </div>
+            <div class="form-group">                
                <label>Carga una Imagen de la Placa</label>
                <input type="file" class="form-control" id="imagenplaca" name="imagenplaca" placeholder="Carga una imagen de la placa encontrada" multiple accept='image/*' required>
             </div>
