@@ -97,7 +97,10 @@ header('Content-type: text/html; charset=utf-8');
 include "../config/db_connect.php";
 
 $placa = strtolower($_POST['buscaplaca']);
-
+$fecha_consulta = date("d-m-Y");
+$estado_visita = $_POST['edo_visita']; 
+       
+       
 $query = $conn->prepare("SELECT COUNT(placa) FROM encontradas WHERE placa= '" . $placa . "' ");
 $query->execute();
 $query->bind_result($tables);
@@ -114,18 +117,25 @@ if ($banderaPlacaExiste == 0)
     $html_fecha_encontrada = "sin registro para " . $placa;
     $html_nombre = "sin registro para " . $placa;
     $html_telefono = "sin registro para " . $placa;
-
+    
+    
+    $registra_consulta = "INSERT INTO visitas (placa, estado, fecha) VALUES ('".$placa."', '".$estado_visita."', '".$fecha_consulta."')";
+    mysqli_query($conn, $registra_consulta) or die("database error:". mysqli_error($conn));
+    
     echo '<script type="text/javascript">
             alert("No existe registro de esa placa");
             window.location.href="../index.html";
             </script>';
-
+    
 }
 if ($banderaPlacaExiste > 0)
 {    
-
+    
+    
+    $registra_consulta = "INSERT INTO visitas (placa, estado, fecha) VALUES ('".$placa."', '".$estado_visita."', '".$fecha_consulta."')";
+    mysqli_query($conn, $registra_consulta) or die("database error:". mysqli_error($conn));
+    
     $buscaplaca = ("SELECT placa, estado_pertenece, estado_encontrada, fecha_encontrada, nombre, telefono, mensaje, imagen FROM encontradas WHERE placa= '".$placa."'");
-
     if ($result = mysqli_query($conn, $buscaplaca))
     {
         while ($row = $result->fetch_assoc())
