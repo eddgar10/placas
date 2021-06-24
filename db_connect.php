@@ -1,5 +1,5 @@
 <?php
-//https://hub.docker.com/r/tomsik68/xampp/ | migrar a docker y despues a AWS para tenerlo en linea
+
 $servername = "localhost";
 $username = "root";
 $password = "";

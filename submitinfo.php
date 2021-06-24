@@ -50,4 +50,4 @@ if($banderaPlacaExiste > 0)
 
 ?>
 
-<script type="text/javascript"> alert( "<?php echo $mensajefinal ?>" ); window.location.href="../index.html";</script>';
+<script type="text/javascript"> alert( "<?php echo $mensajefinal ?>" ); window.location.href="../index.php";</script>';

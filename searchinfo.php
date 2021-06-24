@@ -6,6 +6,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Busqueda de placas</title>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css"/>
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
       <style>
          #namanyay-search-btn {
          background:#0099ff;
@@ -111,12 +114,13 @@ while ($query->fetch())
 
 if ($banderaPlacaExiste == 0)
 {
-    $html_placa = "sin registro para " . $placa;
-    $html_edo_pertenece = "sin registro para " . $placa;
-    $html_edo_encontrada = "sin registro para " . $placa;
-    $html_fecha_encontrada = "sin registro para " . $placa;
-    $html_nombre = "sin registro para " . $placa;
-    $html_telefono = "sin registro para " . $placa;
+    $html_placa = " " . $placa;
+    $html_edo_pertenece = " " . $placa;
+    $html_edo_encontrada = " " . $placa;
+    $html_fecha_encontrada = " " . $placa;
+    $html_nombre = " " . $placa;
+    $html_telefono = " " . $placa;
+    $html_mensaje = " " . $placa;
     
     
     $registra_consulta = "INSERT INTO visitas (placa, estado, fecha) VALUES ('".$placa."', '".$estado_visita."', '".$fecha_consulta."')";
@@ -124,8 +128,9 @@ if ($banderaPlacaExiste == 0)
     
     echo '<script type="text/javascript">
             alert("No existe registro de esa placa");
-            window.location.href="../index.html";
-            </script>';
+            window.location.href="../index.php";
+            </script>';                
+    
     
 }
 if ($banderaPlacaExiste > 0)
