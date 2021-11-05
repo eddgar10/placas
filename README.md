@@ -9,4 +9,4 @@
 -   placas-> index.html **
 *trabaja bajo xampp 7.2.34 *
 
-![Screenshot](Captura de pantalla de 2021-06-16 15-31-46.png)
+![Screenshot](frontplaca.png)
